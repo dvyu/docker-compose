@@ -6,6 +6,7 @@
 version: '3'
 services:
   mediawiki:
+    containermane: wiki
     image: mediawiki
     restart: always
     ports:
@@ -19,6 +20,7 @@ services:
       # the mediawiki service
       # - ./LocalSettings.php:/var/www/html/LocalSettings.php
   database:
+    containermane: mysql
     image: mariadb
     restart: always
     environment:
