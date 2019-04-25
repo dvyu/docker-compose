@@ -27,3 +27,5 @@ services:
       MYSQL_USER: wikiuser
       MYSQL_PASSWORD: ex@mp1e
       # MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+      # MYSQL_ROOT_PASSWORD:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
