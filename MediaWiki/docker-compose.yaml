@@ -10,7 +10,7 @@ services:
     image: mediawiki
     restart: always
     ports:
-      - 8080:80
+      - ${WIKI_PORT}:80
     links:
       - database
     volumes:
