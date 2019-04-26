@@ -14,11 +14,11 @@ services:
     links:
       - database
     volumes:
-      - ./images:/var/www/html/images
+      - ${WIKI_IMAGES}:/var/www/html/images
       # After initial setup, download LocalSettings.php to the same directory as
       # this yaml and uncomment the following line and use compose to restart
       # the mediawiki service
-      - ./LocalSettings.php:/var/www/html/LocalSettings.php
+      - ${WIKI_CONFIG}:/var/www/html/LocalSettings.php
   database:
     container_name: mysql
     image: mariadb
@@ -32,4 +32,4 @@ services:
       # MYSQL_ROOT_PASSWORD:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     volumes:
-      - ./mysql:/var/lib/mysql
+      - ${WIKI_MYSQL}:/var/lib/mysql
