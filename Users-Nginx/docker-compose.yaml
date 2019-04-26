@@ -8,6 +8,6 @@ services:
          - "443:443"
       volumes:
          - ./certs:/etc/nginx/certs
-         - ./sites-enabled:/etc/nginx/sites-enabled
+         - ./conf.d:/etc/nginx/conf.d
          - ./include-static:/etc/nginx/include-static
          - ./logs:/var/log/nginx
