@@ -1,0 +1,9 @@
+#/bin/sh
+
+# To make this file executable run 'chmod 755 ./ConfigTest' command
+CONTAINER_NAME=lykkex/loadbalancer
+CONFIGTEST_COMMAND="/etc/init.d/nginx reload"
+
+ID=$(docker ps | grep "$CONTAINER_NAME"|awk '{print $1}')
+echo ID $ID
+docker exec $ID $CONFIGTEST_COMMAND
