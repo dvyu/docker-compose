@@ -1,0 +1,13 @@
+version: "2"
+services:
+  smtpserver:
+    container_name: smtpserver
+    image: lykkex/emailsmtpserver:1.0.3
+    hostname: ${SERVER_NAME}
+    ports:
+      - "${PORT}:25"
+    volumes:
+          - ./dkim.key:/etc/postfix/dkim/dkim.key
+    command:
+      - '${DOMAIN_NAME}'
+      - '${USER_PASSWORD}'
