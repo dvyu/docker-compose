@@ -1,16 +1,22 @@
-# SMTP Server
-## PTR record
-PTR (https://tools.ietf.org/html/rfc2505#section-1.4)
+## SMTP Server
+1. Add PTR record
+   PTR domain record - IP of your server with FQDN value from EHLO message (if ```SERVER_NAME=mail.domain.org``` at ```.env``` and external IP of your smtp server ```123.124.125.126``` add these DNS record at DNS server of your internet provider (/var/named/125.124.123.in-addr.arpa)
+   ```
+   126 IN PTR mail.domain.org.
+   ```
+   To check
+   ```
+   nslookup 123.124.125.126
+   126.125.124.123.in-addr.arpa     name = mail.domain.org.
+   
+   Authoritative answers can be found from:
+   ```
 
-1) PTR domain record - IP of your server with FQDN value from EHLO message
 
-
-SPF (https://tools.ietf.org/html/rfc7208)
 
 1) TXT domain record - @ with value "v=spf1 ip4:123.124.125.126 -all"
 
 
-DKIM (https://tools.ietf.org/html/rfc4870, http://domainkeys.sourceforge.net/, http://www.dkim.org/, https://www.xpertdns.com/billing/knowledgebase/1/DomainKeys-or-DKIM.html)
 
 1) TXT domain policy record - _domainkey with value "o=-; r=postmaster@domain.org;"
 
@@ -79,7 +85,13 @@ nslookup -type=txt mail._domainkey.domain.org
 nslookup -type=txt _dmarc.domain.org
 
 ## Links
-https://gaiaes.com/article/domainkeys-identified-mail-dkim-and-postfix-header-checks
+1. PTR https://tools.ietf.org/html/rfc2505#section-1.4
+1. SPF https://tools.ietf.org/html/rfc7208
+1. DKIM1 https://tools.ietf.org/html/rfc4870
+1. DKIM2 http://domainkeys.sourceforge.net/
+1. DKIM3 http://www.dkim.org/
+1. DKIM4 https://www.xpertdns.com/billing/knowledgebase/1/DomainKeys-or-DKIM.html)
+1. DKIM5 https://gaiaes.com/article/domainkeys-identified-mail-dkim-and-postfix-header-checks
 https://habrahabr.ru/post/106589/
 https://www.mail-tester.com/web-68bg8
 https://www.mail-tester.com/web-aozar
